@@ -1,0 +1,51 @@
+{
+  "service" : {
+    "requests": [
+      {
+        "id" : "request1",
+        "url" : "simple1",
+        "method" : "POST",
+        "headers" : [
+          {
+            "name" : "Content-Type",
+            "value" : "Content-Type=application/json"
+          }
+        ],
+        "body" : "*",
+        "onRequest" : [
+          "response1"
+        ]
+      },
+      {
+        "id" : "request2",
+        "url" : "simple2/{url}?param1={id}",
+        "method" : "POST",
+        "body" : "*",
+        "onRequest" : [
+          "response2"
+        ]
+      },
+      {
+        "id" : "forward1",
+        "url": "http://localhost:9090/forward1",
+        "method": "GET",
+        "body": "{ \"message\" : \"forward OK!\" }"
+      }
+    ],
+    "responses" : [
+      {
+        "id" : "response1",
+        "status": 200,
+        "body": "{ \"message\" : \"response1 OK!\" }"
+      },
+      {
+        "id" : "response2",
+        "status": 200,
+        "body": {
+          "id" : "{id}",
+          "url" : "{url}"
+        }
+      }
+    ]
+  }
+}
