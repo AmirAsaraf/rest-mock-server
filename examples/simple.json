@@ -4,7 +4,7 @@
       {
         "id" : "request1",
         "url" : "simple1",
-        "method" : "POST",
+        "method" : "GET",
         "headers" : [
           {
             "name" : "Content-Type",
